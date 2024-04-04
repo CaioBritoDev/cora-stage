@@ -11,7 +11,7 @@ function coraToken(request, response) {
   return response.status(200).json({
     api: apiSecret,
     authKey: authKey,
-    yours: bearer
+    yours: request.header
   })
 
   if (!bearer) return response.status(401).json({ message: "authorization failed" });
