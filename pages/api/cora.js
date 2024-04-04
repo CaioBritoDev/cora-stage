@@ -16,6 +16,8 @@ function coraToken(request, response) {
     return response.status(401).json({ message: "authorization failed" });
   }
 
+  // C:\Users\caiof\OneDrive\Documentos\cora-stage\pages\api
+  
   const cert = fs.readFileSync(
     "C:\\Users\\caiof\\OneDrive\\Documentos\\cora-stage\\pages\\api\\certificate.pem"
   );
