@@ -17,11 +17,11 @@ function coraToken(request, response) {
   }
 
   const cert = fs.readFileSync(
-    "C:\\Users\\caiof\\OneDrive\\Documentos\\new\\pages\\api\\certificate.pem"
+    "C:\\Users\\caiof\\OneDrive\\Documentos\\cora-stage\\pages\\api\\certificate.pem"
   );
 
   const key = fs.readFileSync(
-    "C:\\Users\\caiof\\OneDrive\\Documentos\\new\\pages\\api\\private-key.key"
+    "C:\\Users\\caiof\\OneDrive\\Documentos\\cora-stage\\pages\\api\\private-key.key"
   );
 
   const url = "https://matls-clients.api.stage.cora.com.br/token";
@@ -33,7 +33,7 @@ function coraToken(request, response) {
 
   // AXIOS REQUEST
 
-  /*const agent = new https.Agent({
+  const agent = new https.Agent({
     cert: cert,
     key: key,
   });
@@ -54,11 +54,11 @@ function coraToken(request, response) {
       return response.status(400).json({
         err: error,
       });
-    });*/
+    });
 
   // XML HTTP REQUEST - NODE
 
-  const https = require("https");
+  /*const https = require("https");
 
   const options = {
     method: "POST",
@@ -92,7 +92,7 @@ function coraToken(request, response) {
   });
 
   req.write(params); // Send the body
-  req.end();
+  req.end();*/
 
   // If you want to save the response in cache and perform your endpoint - in 10 seconds, versel make other request and put in the cache - your website never going to crash -> just for generic responses endpoints. Not my case
   // response.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
