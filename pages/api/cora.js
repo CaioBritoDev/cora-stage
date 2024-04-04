@@ -8,7 +8,7 @@ function coraToken(request, response) {
 
   let bearer = request.headers["authorization"]
 
-  response.status(200).json({
+  return response.status(200).json({
     api: apiSecret,
     authKey: authKey,
     yours: bearer
