@@ -1,5 +1,4 @@
 import axios from "axios";
-import { headers } from 'next/headers'
 const https = require("https");
 const fs = require("fs");
 
@@ -10,7 +9,7 @@ function coraToken(request, response) {
   let bearer = request.headers["authorization"]
 
   return response.status(200).json({
-    req: headers()
+    req: bearer
   });
 
   if (!bearer) return response.status(401).json({ message: "authorization failed" });
