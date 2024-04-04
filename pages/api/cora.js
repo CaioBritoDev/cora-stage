@@ -9,7 +9,7 @@ function coraToken(request, response) {
   let bearer = request.headers["authorization"]
 
   return response.status(200).json({
-    req: request
+    req: request.headers["authorization"]
   })
 
   if (!bearer) return response.status(401).json({ message: "authorization failed" });
