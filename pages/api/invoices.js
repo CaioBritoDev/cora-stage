@@ -103,7 +103,7 @@ function invoices(request, response) {
     .then((res) => {
       // Always 200 status code
       return response.status(200).json(
-        res // Axios make res.json() and stores in the data
+        res.data // Axios make res.json() and stores in the data
       );
     })
     .catch((error) => {
