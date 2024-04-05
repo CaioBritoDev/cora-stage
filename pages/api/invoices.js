@@ -106,7 +106,7 @@ function invoices(request, response) {
       );
     })
     .catch((error) => {
-      return response.status(error.status).json(error);
+      return response.status(499).json(error);
     });
 }
 
