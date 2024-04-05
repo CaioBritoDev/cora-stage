@@ -89,7 +89,7 @@ function invoices(request, response) {
       httpsAgent: agent
     })
     .then((res) => {
-      return response.status(200).json(
+      return response.status(res.status).json(
         res.data // Axios make res.json() and stores in the data
       );
     })
