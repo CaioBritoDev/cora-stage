@@ -20,7 +20,7 @@ function invoices(request, response) {
 
   const key = Buffer.from(process.env.PRIVATE_KEY, "base64");
 
-  const url = "https://matls-clients.api.stage.cora.com.br/invoices";
+  const url = "https://api.stage.cora.com.br/invoices/";
 
   const params = {
     code: "meu_id",
@@ -83,8 +83,7 @@ function invoices(request, response) {
       headers: {
         "Content-Type": "application/json",
         "Idempotency-Key": request.body._id,
-        "Authorization": `Bearer ${request.body.token}`,
-        "Accept": "application/json"
+        "Authorization": `Bearer ${request.body.token}`
       },
       httpsAgent: agent,
     })
