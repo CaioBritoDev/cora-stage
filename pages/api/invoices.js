@@ -1,6 +1,10 @@
 import axios from "axios";
 const https = require("https");
 
+export const config = {
+  maxDuration: 20,
+};
+
 function invoices(request, response) {
 
   const authKey = process.env.AUTH_KEY;
