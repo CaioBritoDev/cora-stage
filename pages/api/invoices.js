@@ -89,7 +89,7 @@ function invoices(request, response) {
       "https://matls-clients.api.stage.cora.com.br/invoices/" + invoice_id;
 
       return response.json({
-        url: url
+        url: request.query
       })
 
     const agent = new https.Agent({
