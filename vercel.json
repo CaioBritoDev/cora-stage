@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/cora.js": {
+      "includeFiles": ["certificate.pem", "private-key.key"]
+    }
+  }
+}
