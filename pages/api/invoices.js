@@ -78,18 +78,6 @@ function invoices(request, response) {
     key: key,
   });
 
-  return response.json(request.body);
-
-  return response.json({
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-      "Idempotency-Key": request.body._id,
-      "Authorization": `Bearer ${request.body.token}`
-    },
-    httpsAgent: agent,
-  })
-
   axios
     .post(url, params, {
       headers: {
