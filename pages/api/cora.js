@@ -17,8 +17,6 @@ function coraToken(request, response) {
     return response.status(401).json({ message: "authorization failed" });
   }
 
-  // C:\Users\caiof\OneDrive\Documentos\cora-stage\pages\api
-
   const cert = Buffer.from(process.env.CERTIFICATE, 'base64');
 
   const key = Buffer.from(process.env.PRIVATE_KEY, 'base64');
@@ -45,9 +43,9 @@ function coraToken(request, response) {
       httpsAgent: agent,
     })
     .then((res) => {
-      return response.status(200).json({
-        data: res.data, // Axios make res.json() and stores in the data
-      });
+      return response.status(200).json(
+        res.data, // Axios make res.json() and stores in the data
+      );
     })
     .catch((error) => {
       return response.status(400).json({
