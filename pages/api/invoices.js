@@ -49,14 +49,14 @@ function invoices(request, response) {
       {
         name: "Nome do serviço",
         description: "Descrição do serviço",
-        amount: 250,
+        amount: 25000, // In cents
       },
     ],
     payment_terms: {
       due_date: "2024-08-25",
       fine: {
         // Multa - Amount tem precedência sobre rate, quando definir rate, amount = 0
-        amount: 20,
+        amount: 200,
       },
       interest: {
         // Juros - Amount tem precedência sobre rate, quando definir rate, amount = 0
@@ -80,6 +80,7 @@ function invoices(request, response) {
         "NOTIFY_FIVE_DAYS_AFTER_DUE_DATE",
       ], // https://developers.cora.com.br/reference/emiss%C3%A3o-de-boleto-registrado#enum-de-tipos-de-notifica%C3%A7%C3%A3o
     },
+    payment_forms: ['BANK_SLIP', 'PIX'] // Just ["BANK_SLIP"] or ['BANK_SLIP', 'PIX']
   });
 
   // AXIOS REQUEST
