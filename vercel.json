@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "api/file.js": {
-      "includeFiles": ["private-key.key", "certificate.pem"]
-    }
-  }
-}
