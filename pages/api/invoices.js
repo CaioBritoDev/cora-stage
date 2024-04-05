@@ -1,5 +1,4 @@
 import axios from "axios";
-import bodyParser from 'body-parser';
 const https = require("https");
 
 function invoices(request, response) {
@@ -79,7 +78,7 @@ function invoices(request, response) {
     key: key,
   });
 
-  bodyParser.json(); // Parsing the body in JSON
+  request.body = JSON.parse(request.body)
 
   return response.json({
     headers: {
