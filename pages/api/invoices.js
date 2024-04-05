@@ -2,7 +2,7 @@ import axios from "axios";
 const https = require("https");
 
 function invoices(request, response) {
-  
+
   const authKey = process.env.AUTH_KEY;
 
   let bearer = request.headers["authorization"];
@@ -95,7 +95,7 @@ function invoices(request, response) {
     })
     .catch((error) => {
       return response.status(400).json({
-        err: error,
+        err: error.body,
       });
     });
 }
