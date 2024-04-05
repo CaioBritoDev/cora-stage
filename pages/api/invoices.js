@@ -81,12 +81,12 @@ function invoices(request, response) {
   axios
     .post(url, params, {
       headers: {
-        "Accept": "application/json",
+       // "Accept": "application/json",
         "Content-Type": "application/json",
         "Idempotency-Key": request.body._id,
         "Authorization": `Bearer ${request.body.token}`
       },
-      httpsAgent: agent,
+      httpsAgent: agent
     })
     .then((res) => {
       return response.status(200).json(
@@ -94,7 +94,7 @@ function invoices(request, response) {
       );
     })
     .catch((error) => {
-      return response.status(400).json(
+      return response.status(error.status).json(
         error
       );
     });
