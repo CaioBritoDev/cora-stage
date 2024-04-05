@@ -5,19 +5,19 @@ function token(request, response) {
   const apiSecret = process.env.CLIENT_ID_STAGE;
   const authKey = process.env.AUTH_KEY;
 
-  let bearer = request.headers["authorization"];
+  const bearer = request.headers["authorization"];
 
   if (!bearer)
     return response
       .status(401)
-      .json({ message: "authorization failed in endpoint stage" });
+      .json({ message: "authorization failed in endpoint stage - header without authorization" });
 
-  bearer = bearer.replace("Bearer", "").trim();
+  const endpointKey = bearer.replace("Bearer", "").trim();
 
-  if (bearer !== authKey) {
+  if (endpointKey !== authKey) {
     return response
       .status(401)
-      .json({ message: "authorization failed in endpoint stage" });
+      .json({ message: "authorization failed in endpoint stage - invalid endpoint key" });
   }
 
   const cert = Buffer.from(process.env.CERTIFICATE, "base64");
