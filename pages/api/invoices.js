@@ -94,9 +94,9 @@ function invoices(request, response) {
       );
     })
     .catch((error) => {
-      return response.status(400).json({
-        err: error.body,
-      });
+      return response.status(400).json(
+        error
+      );
     });
 }
 
