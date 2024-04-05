@@ -1,7 +1,7 @@
 module.exports = {
   experimental: {
     outputFileTracingIncludes: {
-      '/api/keys': ['./certificate.pem', './private-key.key'],
+      '/api/cora.js': ['certificate.pem', 'private-key.key'],
     }
   },
 }
