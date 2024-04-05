@@ -20,9 +20,9 @@ function invoices(request, response) {
 
   const key = Buffer.from(process.env.PRIVATE_KEY, "base64");
 
-  const url = "https://api.stage.cora.com.br/invoices/";
+  const url = "https://matls-clients.api.stage.cora.com.br/invoices";
 
-  const params = {
+  const params = JSON.stringify({
     code: "meu_id",
     customer: {
       name: "Fulano da Silva",
@@ -45,13 +45,13 @@ function invoices(request, response) {
       {
         name: "Nome do serviço",
         description: "Descrição do serviço",
-        amount: 25000,
+        amount: 250,
       },
     ],
     payment_terms: {
       due_date: "2024-08-25",
       fine: { // Multa - Amount tem precedência sobre rate, quando definir rate, amount = 0
-        amount: 500,
+        amount: 20,
       },
       interest: { // Juros - Amount tem precedência sobre rate, quando definir rate, amount = 0
         rate: 3.67, // Valor percentual a ser cobrado
@@ -68,8 +68,9 @@ function invoices(request, response) {
         email: "fulano@email.com"
       }, 
       rules: ["NOTIFY_ON_DUE_DATE", "NOTIFY_TWO_DAYS_AFTER_DUE_DATE", "NOTIFY_FIVE_DAYS_AFTER_DUE_DATE"] // https://developers.cora.com.br/reference/emiss%C3%A3o-de-boleto-registrado#enum-de-tipos-de-notifica%C3%A7%C3%A3o
-    }
-  };
+    },
+    payment_forms: ['BANK_SLIP', 'PIX']
+  });
 
   // AXIOS REQUEST
 
@@ -81,6 +82,7 @@ function invoices(request, response) {
   axios
     .post(url, params, {
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
         "Idempotency-Key": request.body._id,
         "Authorization": `Bearer ${request.body.token}`
