@@ -1,6 +1,10 @@
 module.exports = {
   experimental: {
-    outputFileTracingRoot: path.join(process.cwd(), 'certificate.pem'),
-    outputFileTracingRoot: path.join(process.cwd(), 'private-key.key')
+    outputFileTracingIncludes: {
+      'certificate.pem': ['./necessary-folder/**/*'],
+    },
+    outputFileTracingIncludes: {
+      'private-key.key': ['./necessary-folder/**/*'],
+    },
   },
 }
