@@ -42,7 +42,7 @@ function token(request, response) {
       httpsAgent: agent,
     })
     .then((res) => {
-      return response.status(res.status).json(
+      return response.status(200).json( // Always 200 status code
         res.data, // Axios make res.json() and stores in the data
       );
     })
