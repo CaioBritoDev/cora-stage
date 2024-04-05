@@ -77,12 +77,10 @@ function invoices(request, response) {
     const { invoice_id } = request.query;
 
     if (!invoice_id) {
-      return response
-        .status(400)
-        .json({
-          message:
-            "please, provide a invoice_id to cancel in query params (invoice_id)",
-        });
+      return response.status(400).json({
+        message:
+          "please, provide a invoice_id to cancel in query params (invoice_id)",
+      });
     }
 
     const url =
