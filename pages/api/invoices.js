@@ -56,7 +56,7 @@ function invoices(request, response) {
       due_date: "2024-08-25",
       fine: {
         // Multa - Amount tem precedência sobre rate, quando definir rate, amount = 0
-        amount: 200,
+        amount: 200, // In cents
       },
       interest: {
         // Juros - Amount tem precedência sobre rate, quando definir rate, amount = 0
@@ -103,7 +103,7 @@ function invoices(request, response) {
     .then((res) => {
       // Always 200 status code
       return response.status(200).json(
-        res.data // Axios make res.json() and stores in the data
+        res // Axios make res.json() and stores in the data
       );
     })
     .catch((error) => {
