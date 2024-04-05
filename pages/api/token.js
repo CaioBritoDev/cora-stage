@@ -1,9 +1,7 @@
 import axios from "axios";
-import fs from 'fs';
-import path from 'path';
-const https = require("https");
 
-function coraToken(request, response) {
+function token(request, response) {
+
   const apiSecret = process.env.CLIENT_ID_STAGE;
   const authKey = process.env.AUTH_KEY;
 
@@ -93,6 +91,7 @@ function coraToken(request, response) {
 
   // If you want to save the response in cache and perform your endpoint - in 10 seconds, versel make other request and put in the cache - your website never going to crash -> just for generic responses endpoints. Not my case
   // response.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
+
 }
 
-export default coraToken;
+export default token;
