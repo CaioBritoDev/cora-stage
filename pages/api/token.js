@@ -47,9 +47,9 @@ function token(request, response) {
       );
     })
     .catch((error) => {
-      return response.status(400).json({
-        err: error,
-      });
+      return response.status(400).json(
+        error
+      );
     });
 
   // XML HTTP REQUEST - NODE
