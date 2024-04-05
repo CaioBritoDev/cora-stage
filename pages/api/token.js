@@ -1,24 +1,28 @@
 import axios from "axios";
-const https = require('https');
+const https = require("https");
 
 function token(request, response) {
-
   const apiSecret = process.env.CLIENT_ID_STAGE;
   const authKey = process.env.AUTH_KEY;
 
-  let bearer = request.headers["authorization"]
+  let bearer = request.headers["authorization"];
 
-  if (!bearer) return response.status(401).json({ message: "authorization failed" });
+  if (!bearer)
+    return response
+      .status(401)
+      .json({ message: "authorization failed in endpoint stage" });
 
   bearer = bearer.replace("Bearer", "").trim();
 
   if (bearer !== authKey) {
-    return response.status(401).json({ message: "authorization failed" });
+    return response
+      .status(401)
+      .json({ message: "authorization failed in endpoint stage" });
   }
 
-  const cert = Buffer.from(process.env.CERTIFICATE, 'base64');
+  const cert = Buffer.from(process.env.CERTIFICATE, "base64");
 
-  const key = Buffer.from(process.env.PRIVATE_KEY, 'base64');
+  const key = Buffer.from(process.env.PRIVATE_KEY, "base64");
 
   const url = "https://matls-clients.api.stage.cora.com.br/token";
 
@@ -42,14 +46,13 @@ function token(request, response) {
       httpsAgent: agent,
     })
     .then((res) => {
-      return response.status(200).json( // Always 200 status code
-        res.data, // Axios make res.json() and stores in the data
+      return response.status(200).json(
+        // Always 200 status code
+        res.data // Axios make res.json() and stores in the data
       );
     })
     .catch((error) => {
-      return response.status(error.status).json(
-        error
-      );
+      return response.status(error.status).json(error);
     });
 
   // XML HTTP REQUEST - NODE
@@ -92,7 +95,6 @@ function token(request, response) {
 
   // If you want to save the response in cache and perform your endpoint - in 10 seconds, versel make other request and put in the cache - your website never going to crash -> just for generic responses endpoints. Not my case
   // response.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
-
 }
 
 export default token;
