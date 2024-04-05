@@ -94,7 +94,7 @@ function invoices(request, response) {
     });
 
     axios
-      .delete(url, params, {
+      .delete(url, {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${request.body.token}`,
