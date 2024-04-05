@@ -19,11 +19,11 @@ function coraToken(request, response) {
 
   // C:\Users\caiof\OneDrive\Documentos\cora-stage\pages\api
 
-  const certPath = path.join(process.cwd(), 'pages/api/keys/certificate.pem');
+  const certPath = path.join(process.cwd(), 'certificate.pem');
 
   const cert = fs.readFileSync(certPath);
 
-  const keyPath = path.join(process.cwd(), 'pages/api/keys/private-key.key');
+  const keyPath = path.join(process.cwd(), 'private-key.key');
 
   const key = fs.readFileSync(keyPath);
 
