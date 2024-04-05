@@ -78,7 +78,7 @@ function invoices(request, response) {
     key: key,
   });
 
-  request.body = JSON.parse(request.body)
+  return response.json(request.body);
 
   return response.json({
     headers: {
