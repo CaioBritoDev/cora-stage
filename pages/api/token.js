@@ -2,7 +2,9 @@ import axios from "axios";
 const https = require("https");
 
 function token(request, response) {
-  const apiSecret = process.env.CLIENT_ID_STAGE;
+
+  const client_id = process.env.CLIENT_ID_STAGE;
+
   const authKey = process.env.AUTH_KEY;
 
   const bearer = request.headers["authorization"];
@@ -28,7 +30,7 @@ function token(request, response) {
 
   const params = new URLSearchParams({
     grant_type: "client_credentials",
-    client_id: apiSecret,
+    client_id: client_id,
   }).toString();
 
   // AXIOS REQUEST
