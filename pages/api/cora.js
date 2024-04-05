@@ -1,6 +1,7 @@
 import axios from "axios";
+import fs from 'fs';
+import path from 'path';
 const https = require("https");
-const fs = require("fs");
 
 function coraToken(request, response) {
   const apiSecret = process.env.CLIENT_ID_STAGE;
@@ -17,14 +18,14 @@ function coraToken(request, response) {
   }
 
   // C:\Users\caiof\OneDrive\Documentos\cora-stage\pages\api
-  
-  const cert = fs.readFileSync(
-    "C:\\Users\\caiof\\OneDrive\\Documentos\\cora-stage\\pages\\api\\certificate.pem"
-  );
 
-  const key = fs.readFileSync(
-    "C:\\Users\\caiof\\OneDrive\\Documentos\\cora-stage\\pages\\api\\private-key.key"
-  );
+  const certPath = path.join(process.cwd(), '/pages/api/certificate.pem');
+
+  const cert = fs.readFileSync(certPath);
+
+  const keyPath = path.join(process.cwd(), '/pages/api/private-key.key');
+
+  const key = fs.readFileSync(keyPath);
 
   const url = "https://matls-clients.api.stage.cora.com.br/token";
 
