@@ -19,13 +19,9 @@ function coraToken(request, response) {
 
   // C:\Users\caiof\OneDrive\Documentos\cora-stage\pages\api
 
-  const certPath = path.join(process.cwd(), 'certificate.pem');
+  const cert = Buffer.from(process.env.CERTIFICATE, 'base64');
 
-  const cert = fs.readFileSync(certPath);
-
-  const keyPath = path.join(process.cwd(), 'private-key.key');
-
-  const key = fs.readFileSync(keyPath);
+  const key = Buffer.from(process.env.PRIVATE_KEY, 'base64');
 
   const url = "https://matls-clients.api.stage.cora.com.br/token";
 
