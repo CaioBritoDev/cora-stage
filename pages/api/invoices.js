@@ -68,8 +68,7 @@ function invoices(request, response) {
         email: "fulano@email.com"
       }, 
       rules: ["NOTIFY_ON_DUE_DATE", "NOTIFY_TWO_DAYS_AFTER_DUE_DATE", "NOTIFY_FIVE_DAYS_AFTER_DUE_DATE"] // https://developers.cora.com.br/reference/emiss%C3%A3o-de-boleto-registrado#enum-de-tipos-de-notifica%C3%A7%C3%A3o
-    },
-    payment_forms: ['BANK_SLIP', 'PIX']
+    }
   });
 
   // AXIOS REQUEST
@@ -78,6 +77,16 @@ function invoices(request, response) {
     cert: cert,
     key: key,
   });
+
+  return response.json({
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Idempotency-Key": request.body._id,
+      "Authorization": `Bearer ${request.body.token}`
+    },
+    httpsAgent: agent,
+  })
 
   axios
     .post(url, params, {
