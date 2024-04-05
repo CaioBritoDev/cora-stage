@@ -32,7 +32,7 @@ function invoices(request, response) {
     services: request.body.services,
     payment_terms: request.body.payment_terms,
     notifications: request.body.notifications,
-    payment_forms: request.body.payment_forms // Just ["BANK_SLIP"] or ['BANK_SLIP', 'PIX']
+    payment_forms: request.body.payment_forms
   });
 
   // AXIOS REQUEST

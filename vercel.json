@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "invoices": {
+      "maxDuration": 20000
+    }
+  }
+}
