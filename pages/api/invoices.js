@@ -2,6 +2,7 @@ import axios from "axios";
 const https = require("https");
 
 function invoices(request, response) {
+
   const authKey = process.env.AUTH_KEY;
 
   const bearer = request.headers["authorization"];
@@ -38,6 +39,7 @@ function invoices(request, response) {
   const key = Buffer.from(process.env.PRIVATE_KEY, "base64");
 
   if (action === "create") {
+
     const url = "https://matls-clients.api.stage.cora.com.br/invoices";
 
     const params = JSON.stringify({
@@ -73,7 +75,9 @@ function invoices(request, response) {
       .catch((error) => {
         return response.status(499).json(error);
       });
+
   } else if (action === "cancel") {
+
     const { invoice_id } = request.query;
 
     if (!invoice_id) {
@@ -102,7 +106,7 @@ function invoices(request, response) {
       .then((res) => {
         // Always 200 status code
         return response.status(200).json(
-          res.data // Axios make res.json() and stores in the data
+          res // Axios make res.json() and stores in the data
         );
       })
       .catch((error) => {
