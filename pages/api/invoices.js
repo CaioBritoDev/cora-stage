@@ -104,9 +104,9 @@ function invoices(request, response) {
         httpsAgent: agent,
       })
       .then((res) => {
-        // Always 200 status code
-        return response.status(200).json(
-          res // Axios make res.json() and stores in the data
+        // Can be other status
+        return response.status(res.status).json(
+          res.data
         );
       })
       .catch((error) => {
